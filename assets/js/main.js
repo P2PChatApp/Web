@@ -1,0 +1,1 @@
+const System = new System();
