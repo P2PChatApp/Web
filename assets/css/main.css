@@ -19,11 +19,10 @@
 
 .GroupList {
     margin-left: 30px;
-    width: 250px;
 }
 
 .GroupList .scroll {
     height: 500px;
-    overflow-x: scroll;
-    overflow-y: scroll;
+    width: 250px;
+    overflow: scroll;
 }
