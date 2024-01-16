@@ -1,4 +1,4 @@
-const System = new System();
+const system = new System();
 
 const NameInput = document.getElementById("NameInput");
 const NameButton = document.getElementById("NameButton");
