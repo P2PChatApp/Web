@@ -13,7 +13,7 @@ NameButton.addEventListener("click",(event)=>{
 
   if(NameInput.disabled){
     NameInput.disabled = false;
-    NameButton.classList.replace("btn-success","btn-outline-success")
+    NameButton.classList.replace("btn-success","btn-primary")
     NameButton.value = "保存";
   }else{
     if(
@@ -22,7 +22,7 @@ NameButton.addEventListener("click",(event)=>{
     ) return log.innerText = "名前は4以上8文字以内に指定してください";
 
     NameInput.disabled = true;
-    NameButton.classList.replace("btn-outline-success","btn-success")
+    NameButton.classList.replace("btn-primary","btn-success")
     NameButton.value = "編集";
   }
 });
