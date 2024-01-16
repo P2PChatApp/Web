@@ -5,7 +5,9 @@ const NameInput = document.getElementById("NameInput");
 const NameButton = document.getElementById("NameButton");
 
 //名前の変更処理
-NameButton.addEventListener("click",()=>{
+NameButton.addEventListener("click",(event)=>{
+  event.preventDefault();
+
   if(NameInput.disabled){
     NameInput.disabled = false;
     NameButton.value = "保存";
