@@ -1,6 +1,5 @@
 const System = new System();
 
-const NameForm = document.getElementById("NameForm");
 const NameInput = document.getElementById("NameInput");
 const NameButton = document.getElementById("NameButton");
 
