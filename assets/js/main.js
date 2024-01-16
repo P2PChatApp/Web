@@ -12,14 +12,14 @@ NameButton.addEventListener("click",(event)=>{
   log.innerText = "";
 
   if(NameInput.disabled){
+    NameInput.disabled = false;
+    NameButton.value = "保存";
+  }else{
     if(
       NameInput.value.length < 4||
       NameInput.value.length > 8
     ) return log.innerText = "名前は4以上8文字以内に指定してください";
 
-    NameInput.disabled = false;
-    NameButton.value = "保存";
-  }else{
     NameInput.disabled = true;
     NameButton.value = "編集";
   }
