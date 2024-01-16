@@ -28,6 +28,10 @@
     overflow-y: scroll;
 }
 
+#LeaveButton {
+    margin-bottom: 5px;
+}
+
 #log {
     color: red;
 }
