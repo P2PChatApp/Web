@@ -8,6 +8,15 @@
     margin-top: 100px;
 }
 
+.Control {
+    width: 350px;
+}
+
+.Chat {
+    margin-left: 30px;
+    width: 350px;
+}
+
 .GroupList {
     margin-left: 30px;
     width: 250px;
