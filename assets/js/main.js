@@ -13,6 +13,11 @@ const GroupButton = document.getElementById("GroupButton");
 
 const CreateInput = document.getElementById("CreateInput");
 const CreateButton = document.getElementById("CreateButton");
+const PublicCheck= document.getElementById("PublicCheck");
+
+const MessageInput = document.getElementById("MessageInput");
+const MessageButton = document.getElementById("MessageButton");
+const Messages = document.getElementById("Messages");
 
 //名前の処理
 NameInput.value = system.client.name;
@@ -64,6 +69,8 @@ GroupButton.addEventListener("click",(event)=>{
     CreateInput.disabled = true;
     CreateButton.disabled = true;
     LeaveButton.disabled = false;
+    MessageInput.disabled = false;
+    MessageButton.disabled = false;
   }catch(error){
     log.innerText = error.message;
   }
@@ -82,7 +89,33 @@ CreateButton.addEventListener("click",async(event)=>{
 
   if(Object.keys(system.client.group).length !== 0) return;
 
-  const id = await system.createGroup(CreateInput.value);
+  const id = await system.createGroup(CreateInput.value,PublicCheck.checked);
 
   JoinCode.innerText = id;
+  GroupInput.value = "";
+  CreateInput.value = "";
+  GroupInput.disabled = true;
+  GroupButton.disabled = true;
+  CreateInput.disabled = true;
+  CreateButton.disabled = true;
+  LeaveButton.disabled = false;
+  MessageInput.disabled = false;
+  MessageButton.disabled = false;
+});
+
+//グループから脱退
+LeaveButton.addEventListener("click",(event)=>{
+  event.preventDefault();
+
+  system.leaveGroup();
+
+  JoinCode.innerText = "&nbsp";
+  GroupInput.disabled = false;
+  GroupButton.disabled = false;
+  CreateInput.disabled = false;
+  CreateButton.disabled = false;
+  LeaveButton.disabled = true;
+  MessageInput.disabled = true;
+  MessageButton.disabled = true;
+  Messages.innerText = "";
 });

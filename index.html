@@ -65,12 +65,8 @@
                                     <input type="text" class="form-control form-control-lg" id="CreateInput" placeholder="グループ名を入力">
                                     <input type="button" class="btn btn-success" id="CreateButton" value="作成">
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="Public" checked>
-                                    <label class="form-check-label" for="Public">
-                                      公開/非公開
-                                    </label>
-                                  </div>
+                                <input class="form-check-input" type="checkbox" id="PublicCheck" checked>
+                                <label class="form-check-label">公開/非公開</label>
                             </div>
                         </div>
                     </div>
@@ -129,12 +125,10 @@
                             <div id="Messages">
 
                             </div>
-                            <form id="MessageForm">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control form-control-lg" id="MessageInput" disabled>
-                                    <input type="submit" class="btn btn-success" id="MessageForm" value="送信" disabled>
-                                </div>
-                            </form>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-lg" id="MessageInput" disabled>
+                                <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
+                            </div>
                         </div>
                     </div>
                 </div>
