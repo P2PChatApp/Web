@@ -43,7 +43,7 @@ NameButton.addEventListener("click",(event)=>{
 //グループ情報
 
 //グループに参加
-GroupButton.addEventListener("click",async(event)=>{
+GroupButton.addEventListener("click",(event)=>{
   event.preventDefault();
 
   log.innerText = "";
@@ -67,4 +67,22 @@ GroupButton.addEventListener("click",async(event)=>{
   }catch(error){
     log.innerText = error.message;
   }
+});
+
+//グループを作成
+CreateButton.addEventListener("click",async(event)=>{
+  event.preventDefault();
+
+  log.innerText = "";
+
+  if(
+    CreateInput.value.length < 4||
+    CreateInput.value.length > 8
+  ) return log.innerText = "グループ名は4以上8文字以内に指定してください";
+
+  if(Object.keys(system.client.group).length !== 0) return;
+
+  const id = await system.createGroup(CreateInput.value);
+
+  JoinCode.innerText = id;
 });
