@@ -45,6 +45,8 @@ GroupButton.addEventListener("click",async(event)=>{
 
   log.innerText = "";
 
+  if(!GroupInput.value) return log.innerText = "参加コードを入力してください";
+
   if(Object.keys(system.client.group).length !== 0) return;
 
   try{
