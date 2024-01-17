@@ -11,6 +11,9 @@ const LeaveButton = document.getElementById("LeaveButton");
 const GroupInput = document.getElementById("GroupInput");
 const GroupButton = document.getElementById("GroupButton");
 
+const CreateInput = document.getElementById("CreateInput");
+const CreateButton = document.getElementById("CreateButton");
+
 //名前の処理
 NameInput.value = system.client.name;
 
@@ -55,8 +58,11 @@ GroupButton.addEventListener("click",async(event)=>{
 
     JoinCode.innerText = GroupInput.value;
     GroupInput.value = "";
+    CreateInput.value = "";
     GroupInput.disabled = true;
     GroupButton.disabled = true;
+    CreateInput.disabled = true;
+    CreateButton.disabled = true;
     LeaveButton.disabled = false;
   }catch(error){
     log.innerText = error.message;
