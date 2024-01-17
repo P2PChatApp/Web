@@ -23,7 +23,7 @@
     overflow-x: scroll;
 }
 
-.GroupList .scroll {
+.GroupList .Groups {
     height: 500px;
     overflow-y: scroll;
 }
@@ -34,4 +34,9 @@
 
 #log {
     color: red;
+}
+
+#Messages {
+    height: 280px;
+    overflow: scroll;
 }

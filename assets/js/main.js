@@ -15,6 +15,8 @@ const CreateInput = document.getElementById("CreateInput");
 const CreateButton = document.getElementById("CreateButton");
 const PublicCheck= document.getElementById("PublicCheck");
 
+const Groups = document.getElementById("Groups");
+
 const MessageInput = document.getElementById("MessageInput");
 const MessageButton = document.getElementById("MessageButton");
 const Messages = document.getElementById("Messages");
@@ -47,6 +49,7 @@ NameButton.addEventListener("click",(event)=>{
 
 //グループ情報
 
+
 //グループに参加
 GroupButton.addEventListener("click",(event)=>{
   event.preventDefault();
@@ -68,6 +71,7 @@ GroupButton.addEventListener("click",(event)=>{
     GroupButton.disabled = true;
     CreateInput.disabled = true;
     CreateButton.disabled = true;
+    PublicCheck.disabled = true;
     LeaveButton.disabled = false;
     MessageInput.disabled = false;
     MessageButton.disabled = false;
@@ -98,6 +102,7 @@ CreateButton.addEventListener("click",async(event)=>{
   GroupButton.disabled = true;
   CreateInput.disabled = true;
   CreateButton.disabled = true;
+  PublicCheck.disabled = true;
   LeaveButton.disabled = false;
   MessageInput.disabled = false;
   MessageButton.disabled = false;
@@ -109,11 +114,12 @@ LeaveButton.addEventListener("click",(event)=>{
 
   system.leaveGroup();
 
-  JoinCode.innerText = "&nbsp";
+  JoinCode.innerHTML = "&nbsp";
   GroupInput.disabled = false;
   GroupButton.disabled = false;
   CreateInput.disabled = false;
   CreateButton.disabled = false;
+  PublicCheck.disabled = false;
   LeaveButton.disabled = true;
   MessageInput.disabled = true;
   MessageButton.disabled = true;
