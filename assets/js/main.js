@@ -5,6 +5,12 @@ const log = document.getElementById("log");
 const NameInput = document.getElementById("NameInput");
 const NameButton = document.getElementById("NameButton");
 
+const JoinCode = document.getElementById("JoinCode");
+const LeaveButton = document.getElementById("LeaveButton");
+
+const GroupInput = document.getElementById("GroupInput");
+const GroupButton = document.getElementById("GroupButton");
+
 //名前の処理
 NameInput.value = system.client.name;
 
@@ -28,5 +34,29 @@ NameButton.addEventListener("click",(event)=>{
     NameInput.disabled = true;
     NameButton.classList.replace("btn-primary","btn-success")
     NameButton.value = "編集";
+  }
+});
+
+//グループ情報
+
+//グループに参加
+GroupButton.addEventListener("click",async(event)=>{
+  event.preventDefault();
+
+  log.innerText = "";
+
+  if(Object.keys(system.client.group).length !== 0) return;
+
+  try{
+    system.joinGroup(GroupInput.value);
+    system.connect();
+
+    JoinCode.innerText = GroupInput.value;
+    GroupInput.value = "";
+    GroupInput.disabled = true;
+    GroupButton.disabled = true;
+    LeaveButton.disabled = false;
+  }catch(error){
+    log.innerText = error.message;
   }
 });
