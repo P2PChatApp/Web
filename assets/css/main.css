@@ -28,8 +28,8 @@
     overflow-y: scroll;
 }
 
-#LeaveButton {
-    margin-bottom: 10px;
+.JoinGroup {
+    margin-top: 10px;
 }
 
 #log {
