@@ -197,3 +197,5 @@ system.peers.addEventListener("message",(event)=>{
     </div>
   `);
 });
+
+Messages.scrollTop = Messages.scrollHeight;
