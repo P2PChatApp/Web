@@ -1,4 +1,4 @@
-const system = new System("wss://ws.taka.cf:3005");
+const system = new System("wss://ws.taka.cf");
 
 const log = document.getElementById("log");
 
