@@ -1,4 +1,4 @@
-const system = new System("wss://ws.gakerbot.net:3005");
+const system = new System("ws://localhost:3005");
 
 const log = document.getElementById("log");
 
