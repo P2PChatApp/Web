@@ -1,4 +1,4 @@
-const system = new System();
+const system = new System("wss://ws.gakerbot.net:3005");
 
 const log = document.getElementById("log");
 
@@ -48,7 +48,47 @@ NameButton.addEventListener("click",(event)=>{
 });
 
 //グループ情報
+system.addEventListener("update",()=>{
+  Groups.innerText = "";
 
+  system.getGroups()
+    .forEach(group=>{
+      Groups.insertAdjacentHTML("beforeend",`
+        <tr>
+          <th scope="row">${group.name}</th>
+          <th scope="row">${group.id}</th>
+          <td>
+            <input type="button" class="btn btn-sm btn-primary" id="${group.id}" value="参加">
+          </td>
+        </tr>
+      `);
+
+      document.getElementById(group.id).addEventListener("click",(event)=>{
+        event.preventDefault();
+
+        if(Object.keys(system.client.group).length !== 0) return;
+
+        try{
+          system.joinGroup(group.id);
+          system.connect();
+
+          JoinCode.innerText = group.id;
+          GroupInput.value = "";
+          CreateInput.value = "";
+          GroupInput.disabled = true;
+          GroupButton.disabled = true;
+          CreateInput.disabled = true;
+          CreateButton.disabled = true;
+          PublicCheck.disabled = true;
+          LeaveButton.disabled = false;
+          MessageInput.disabled = false;
+          MessageButton.disabled = false;
+        }catch(error){
+          log.innerText = error.message;
+        }
+      });
+    });
+});
 
 //グループに参加
 GroupButton.addEventListener("click",(event)=>{
@@ -88,8 +128,8 @@ CreateButton.addEventListener("click",async(event)=>{
 
   if(
     CreateInput.value.length < 4||
-    CreateInput.value.length > 8
-  ) return log.innerText = "グループ名は4以上8文字以内に指定してください";
+    CreateInput.value.length > 12
+  ) return log.innerText = "グループ名は4以上12文字以内に指定してください";
 
   if(Object.keys(system.client.group).length !== 0) return;
 
@@ -124,4 +164,34 @@ LeaveButton.addEventListener("click",(event)=>{
   MessageInput.disabled = true;
   MessageButton.disabled = true;
   Messages.innerText = "";
+});
+
+//メッセージの送信
+MessageButton.addEventListener("click",(event)=>{
+  event.preventDefault();
+
+  if(!MessageInput.value) return;
+
+  system.peers.send({
+    content: MessageInput.value
+  });
+
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card">
+      <div class="card-body">
+        ${system.client.name}: ${MessageInput.value}
+      </div>
+    </div>
+  `);
+});
+
+//メッセージの受信
+system.peers.addEventListener("message",(event)=>{
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card">
+      <div class="card-body">
+        ${event.peer.client.name}: ${event.data.content}
+      </div>
+    </div>
+  `);
 });
