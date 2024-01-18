@@ -179,7 +179,7 @@ MessageButton.addEventListener("click",(event)=>{
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${system.client.name}: ${MessageInput.value}
+        ${system.client.name}(${system.client.id}): ${MessageInput.value}
       </div>
     </div>
   `);
@@ -192,7 +192,7 @@ system.peers.addEventListener("message",(event)=>{
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.peer.client.name}: ${event.data.content}
+        ${event.peer.client.name}(${event.peer.client.id}): ${event.data.content}
       </div>
     </div>
   `);
