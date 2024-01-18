@@ -183,6 +183,8 @@ MessageButton.addEventListener("click",(event)=>{
       </div>
     </div>
   `);
+
+  MessageInput.value = "";
 });
 
 //メッセージの受信
