@@ -1,4 +1,4 @@
-const system = new System("ws://192.168.0.13:3005");
+const system = new System("wss://ws.taka.cf:3005");
 
 const log = document.getElementById("log");
 
