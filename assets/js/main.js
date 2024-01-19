@@ -190,10 +190,12 @@ MessageButton.addEventListener("click",(event)=>{
 
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
+  console.log(event)
+
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.peer.name}(${event.peer.id}): ${event.data.content}
+        ${event.data.client.name}(${event.data.client.id}): ${event.data.content}
       </div>
     </div>
   `);
