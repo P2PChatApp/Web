@@ -203,7 +203,7 @@ system.peers.addEventListener("join",(event)=>{
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.detail.peer.name}(${event.detail.peer.id})が参加しました
+        ${event.detail.peer.name}(${event.detail.peer.id})が接続しました
       </div>
     </div>
   `);
@@ -213,7 +213,7 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.detail.peer.name}(${event.detail.peer.id})が退室しました
+        ${event.detail.peer.name}(${event.detail.peer.id})が切断されました
       </div>
     </div>
   `);
