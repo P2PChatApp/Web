@@ -37,6 +37,6 @@
 
 #Messages {
     height: 350px;
-    overflow: scroll;
+    overflow: auto;
     margin-bottom: 15px;
 }

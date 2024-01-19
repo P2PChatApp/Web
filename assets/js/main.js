@@ -197,6 +197,8 @@ system.peers.addEventListener("message",(event)=>{
       </div>
     </div>
   `);
+
+  Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("join",(event)=>{
@@ -207,6 +209,8 @@ system.peers.addEventListener("join",(event)=>{
       </div>
     </div>
   `);
+
+  Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("leave",(event)=>{
@@ -217,6 +221,6 @@ system.peers.addEventListener("leave",(event)=>{
       </div>
     </div>
   `);
-});
 
-Messages.scrollTop = Messages.scrollHeight;
+  Messages.scrollTop = Messages.scrollHeight;
+});
