@@ -190,12 +190,30 @@ MessageButton.addEventListener("click",(event)=>{
 
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
-  console.log(event)
-
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.data.client.name}(${event.data.client.id}): ${event.data.content}
+        ${event.detail.peer.name}(${event.detail.peer.id}): ${event.detail.data.content}
+      </div>
+    </div>
+  `);
+});
+
+system.peers.addEventListener("join",(event)=>{
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card">
+      <div class="card-body">
+        ${event.detail.peer.name}(${event.detail.peer.id})が参加しました
+      </div>
+    </div>
+  `);
+});
+
+system.peers.addEventListener("leave",(event)=>{
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card">
+      <div class="card-body">
+        ${event.detail.peer.name}(${event.detail.peer.id})が退室しました
       </div>
     </div>
   `);
