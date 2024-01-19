@@ -193,7 +193,7 @@ system.peers.addEventListener("message",(event)=>{
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card">
       <div class="card-body">
-        ${event.peer.client.name}(${event.peer.client.id}): ${event.data.content}
+        ${event.peer.name}(${event.peer.id}): ${event.data.content}
       </div>
     </div>
   `);
