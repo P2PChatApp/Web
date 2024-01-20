@@ -1,10 +1,8 @@
 const system = new System("wss://ws.taka.cf",{
-  name: localStorage.username,
-  id: localStorage.userId
+  name: localStorage.username
 });
 
 localStorage.username = system.client.name;
-localStorage.userId = system.client.id;
 
 const log = document.getElementById("log");
 
