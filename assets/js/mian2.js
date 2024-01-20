@@ -6,4 +6,14 @@ class Main{
   log(text){
     document.getElementById("log").innerText = text;
   }
+
+  addMessage(text){
+    document.getElementById("Messages").insertAdjacentHTML("beforeend",`
+      <div class="card">
+        <div class="card-body">
+          ${text}
+        </div>
+      </div>
+    `);
+  }
 }
