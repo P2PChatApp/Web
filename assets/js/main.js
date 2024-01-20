@@ -1,4 +1,10 @@
-const system = new System("wss://ws.taka.cf");
+const system = new System("wss://ws.taka.cf",{
+  name: localStorage.username,
+  id: localStorage.userId
+});
+
+localStorage.username = system.client.name;
+localStorage.userId = system.client.id;
 
 const log = document.getElementById("log");
 
@@ -40,6 +46,7 @@ NameButton.addEventListener("click",(event)=>{
     ) return log.innerText = "名前は4以上8文字以内に指定してください";
 
     system.client.name = NameInput.value;
+    localStorage.username = NameInput.value;
 
     NameInput.disabled = true;
     NameButton.classList.replace("btn-primary","btn-success")
