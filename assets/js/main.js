@@ -60,7 +60,7 @@ system.addEventListener("update",()=>{
     .filter((group,i,array)=>array.findIndex(g=>g.id === group.id) === i)
     .filter(group=>group.isPublic)
     .forEach((group,i,array)=>{
-      const count = array.filter(g=>g.id,group.id).length;
+      const count = array.filter(g=>g.id === group.id).length;
 
       Groups.insertAdjacentHTML("beforeend",`
         <tr>
