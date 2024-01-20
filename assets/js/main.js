@@ -57,7 +57,7 @@ system.addEventListener("update",()=>{
   Groups.innerText = "";
 
   system.getGroups()
-    .filter(group=>group.isPublic&&group.id !== system.client.group.id)
+    .filter(group=>group.isPublic)
     .forEach(group=>{
       Groups.insertAdjacentHTML("beforeend",`
         <tr>
