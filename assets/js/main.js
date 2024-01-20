@@ -56,11 +56,13 @@ NameButton.addEventListener("click",(event)=>{
 system.addEventListener("update",()=>{
   Groups.innerText = "";
 
-  system.getGroups()
+  const groups = system.getGroups();
+
+  groups
     .filter((group,i,array)=>array.findIndex(g=>g.id === group.id) === i)
     .filter(group=>group.isPublic)
-    .forEach((group,i,array)=>{
-      const count = array.filter(g=>g.id === group.id).length;
+    .forEach(group=>{
+      const count = groups.filter(g=>g.id === group.id).length;
 
       Groups.insertAdjacentHTML("beforeend",`
         <tr>
