@@ -61,8 +61,8 @@ system.addEventListener("update",()=>{
     .forEach(group=>{
       Groups.insertAdjacentHTML("beforeend",`
         <tr>
-          <th scope="row">${group.name}</th>
-          <th scope="row">${group.id}</th>
+          <th scope="row">${escape(group.name)}</th>
+          <th scope="row">${escape(group.id)}</th>
           <td>
             <input type="button" class="btn btn-sm btn-primary" id="${group.id}" value="参加">
           </td>
@@ -182,50 +182,47 @@ MessageButton.addEventListener("click",(event)=>{
     content: MessageInput.value
   });
 
-  Messages.insertAdjacentHTML("beforeend",`
-    <div class="card">
-      <div class="card-body">
-        ${system.client.name}(${system.client.id}): ${MessageInput.value}
-      </div>
-    </div>
-  `);
+  addMessage(`${system.client.name}(${system.client.id}): ${MessageInput.value}`);
 
   MessageInput.value = "";
 });
 
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
-  Messages.insertAdjacentHTML("beforeend",`
-    <div class="card">
-      <div class="card-body">
-        ${event.detail.peer.name}(${event.detail.peer.id}): ${event.detail.data.content}
-      </div>
-    </div>
-  `);
+  addMessage(`${event.detail.peer.name}(${event.detail.peer.id}): ${event.detail.data.content}`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("join",(event)=>{
-  Messages.insertAdjacentHTML("beforeend",`
-    <div class="card">
-      <div class="card-body">
-        ${event.detail.peer.name}(${event.detail.peer.id})が接続しました
-      </div>
-    </div>
-  `);
+  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})が接続しました`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("leave",(event)=>{
-  Messages.insertAdjacentHTML("beforeend",`
-    <div class="card">
-      <div class="card-body">
-        ${event.detail.peer.name}(${event.detail.peer.id})が切断されました
-      </div>
-    </div>
-  `);
+  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})が切断されました`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
+
+function addMessage(text){
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card">
+      <div class="card-body">
+        ${escape(text)}
+      </div>
+    </div>
+  `);
+}
+
+function escape(str){
+  return str.replace(/[&'"<>]/g,(m)=>({
+    "&": "&amp;",
+    "'": "&apos;",
+    '"': "&quot;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "/": "&sol;"
+  })[m]);
+}
