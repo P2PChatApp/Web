@@ -57,12 +57,16 @@ system.addEventListener("update",()=>{
   Groups.innerText = "";
 
   system.getGroups()
+    .filter((group,i,array)=>array.findIndex(g=>g.id === group.id) === i)
     .filter(group=>group.isPublic)
-    .forEach(group=>{
+    .forEach((group,i,array)=>{
+      const count = array.filter(g=>g.id,group.id).length;
+
       Groups.insertAdjacentHTML("beforeend",`
         <tr>
           <th scope="row">${escape(group.name)}</th>
           <th scope="row">${escape(group.id)}</th>
+          <th scope="row">${count}人</th>
           <td>
             <input type="button" class="btn btn-sm btn-primary" id="${group.id}" value="参加">
           </td>
