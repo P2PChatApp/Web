@@ -12,7 +12,7 @@ main {
 
 
 .Control {
-    width: 300px;
+    width: 280px;
 }
 
 .Chat {
@@ -22,7 +22,7 @@ main {
 
 .GroupList {
     margin-left: 15px;
-    width: 250px;
+    width: 280px;
 }
 
 .GroupList .Groups {
