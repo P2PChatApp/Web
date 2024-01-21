@@ -24,7 +24,6 @@ const Groups = document.getElementById("Groups");
 const MessageInput = document.getElementById("MessageInput");
 const MessageButton = document.getElementById("MessageButton");
 const Messages = document.getElementById("Messages");
-const MessageFile = document.getElementById("MessageFile");
 const MessageError = document.getElementById("MessageError");
 
 //名前の処理
@@ -186,43 +185,22 @@ MessageButton.addEventListener("click",(event)=>{
 
   MessageError.innerText = "";
 
-  if(!MessageInput.value&&!MessageFile.files[0]) return MessageError.innerText = "メッセージかファイルを入力してください"
+  if(!MessageInput.value) return MessageError.innerText = "メッセージを入力してください"
 
-  try{
-    if(MessageFile.files[0]){
-      const reader = new FileReader();
-      reader.readAsDataURL(MessageFile.files[0]);
-      reader.addEventListener("load",()=>{
-        const attachment = reader.result;
+  system.peers.send({
+    content: MessageInput.value
+  });
 
-        system.peers.send({
-          content: MessageInput.value,
-          attachment: attachment
-        });
+  addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`);
 
-        addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`,attachment);
-      });
-    }else{
-      system.peers.send({
-        content: MessageInput.value
-      });
+  Messages.scrollTop = Messages.scrollHeight;
 
-      addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`);
-    }
-
-    Messages.scrollTop = Messages.scrollHeight;
-
-    MessageInput.value = "";
-  }catch(error){
-    MessageError.innerText = error.message;
-  }
-
-  MessageFile.value = "";
+  MessageInput.value = "";
 });
 
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
-  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})`,`${event.detail.data.content}`,event.detail.data.attachment);
+  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})`,`${event.detail.data.content}`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
@@ -239,14 +217,13 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.scrollTop = Messages.scrollHeight;
 });
 
-function addMessage(name,content,attachment){
+function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
       <div class="card-body">
         <strong>${escape(name)}</strong>
         <br>
         <span class="content">${escape(content)}</span>
-        ${attachment ? `<img src="${attachment}">`:""}
       </div>
     </div>
   `);
