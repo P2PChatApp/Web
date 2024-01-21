@@ -217,6 +217,10 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.scrollTop = Messages.scrollHeight;
 });
 
+window.addEventListener("beforeunload",()=>{
+  system.leaveGroup();
+});
+
 function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
