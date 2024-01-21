@@ -217,7 +217,7 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.scrollTop = Messages.scrollHeight;
 });
 
-document.addEventListener("beforeunload",()=>{
+window.addEventListener("unload",()=>{
   system.leaveGroup();
 });
 
