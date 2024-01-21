@@ -50,3 +50,7 @@ main {
 .Message {
     margin-bottom: 5px;
 }
+
+.content {
+    margin-left: 10px;
+}
