@@ -223,7 +223,7 @@ function addMessage(name,content){
       <div class="card-body">
         <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
         <br>
-        <span class="content">${escape(content)}</span>
+        <div class="content">${escape(content)}</div>
       </div>
     </div>
   `);
