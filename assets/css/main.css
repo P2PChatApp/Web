@@ -37,6 +37,10 @@ main {
     color: red;
 }
 
+#MessageError {
+    color: red;
+}
+
 #Messages {
     height: 350px;
     overflow: auto;

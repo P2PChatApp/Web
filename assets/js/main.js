@@ -189,22 +189,27 @@ MessageButton.addEventListener("click",(event)=>{
   if(!MessageInput.value&&!MessageFile.files[0]) return MessageError.innerText = "メッセージかファイルを入力してください"
 
   try{
-    let attachment;
     if(MessageFile.files[0]){
       const reader = new FileReader();
       reader.readAsDataURL(MessageFile.files[0]);
       reader.addEventListener("load",()=>{
-        attachment = reader.result;
+        const attachment = reader.result;
+
+        system.peers.send({
+          content: MessageInput.value,
+          attachment: attachment
+        });
+
+        addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`,attachment);
       });
+    }else{
+      system.peers.send({
+        content: MessageInput.value
+      });
+
+      addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`,attachment);
     }
-
-    system.peers.send({
-      content: MessageInput.value,
-      attachment: attachment
-    });
-
-    addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`,attachment);
-
+    
     Messages.scrollTop = Messages.scrollHeight;
 
     MessageInput.value = "";
