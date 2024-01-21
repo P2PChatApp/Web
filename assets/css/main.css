@@ -48,3 +48,8 @@
 .Message {
     margin-bottom: 5px;
 }
+
+.container {
+    margin-right: 30px;
+    margin-left: 30px;
+}
