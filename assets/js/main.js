@@ -214,7 +214,7 @@ system.peers.addEventListener("leave",(event)=>{
 
 function addMessage(text){
   Messages.insertAdjacentHTML("beforeend",`
-    <div class="card">
+    <div class="card Message">
       <div class="card-body">
         ${escape(text)}
       </div>

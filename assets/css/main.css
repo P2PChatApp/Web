@@ -44,3 +44,7 @@
 .SendMessage {
     margin-bottom: 0px !important;
 }
+
+.Message {
+    margin-bottom: 5px;
+}
