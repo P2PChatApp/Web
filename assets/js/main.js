@@ -221,7 +221,7 @@ function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
       <div class="card-body">
-        <strong>${escape(name)}</strong>
+        <strong>${escape(name)}</strong><span class="date">${new Date().toLocaleTimeString()}</span>
         <br>
         <span class="content">${escape(content)}</span>
       </div>

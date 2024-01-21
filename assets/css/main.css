@@ -56,5 +56,9 @@ main {
 }
 
 .content {
-    margin-left: 15px;
+    margin-left: 20px;
+}
+
+.date {
+    text-align: right;
 }
