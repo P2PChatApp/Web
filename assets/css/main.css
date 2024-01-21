@@ -9,16 +9,16 @@
 }
 
 .Control {
-    width: 340px;
+    width: 300px;
 }
 
 .Chat {
     margin-left: 30px;
-    width: 340px;
+    width: 350px;
 }
 
 .GroupList {
-    margin-left: 30px;
+    margin-left: 15px;
     width: 250px;
 }
 
