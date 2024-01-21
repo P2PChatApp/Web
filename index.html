@@ -94,11 +94,9 @@
                         <div class="input-group mb-3 SendMessage">
                             <input type="text" class="form-control form-control-lg" id="MessageInput" placeholder="メッセージを入力" disabled>
                             <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><input type="file" class="form-control dropdown-item" id="fileInput" style="display: none;"></li>
-                            </ul>
                         </div>
+                        <input type="file" class="form-control form-control-sm" id="MessageFile" accept="image/*">
+                        <a id="MessageError"></a>
                     </div>
                 </div>
             </div>
