@@ -217,12 +217,6 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.scrollTop = Messages.scrollHeight;
 });
 
-window.addEventListener("unload",(event)=>{
-  if(!confirm("接続を終了しますか？")) return event.preventDefault();
-  
-  system.leaveGroup();
-});
-
 function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
