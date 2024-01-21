@@ -188,7 +188,7 @@ MessageButton.addEventListener("click",(event)=>{
     content: MessageInput.value
   });
 
-  addMessage(`${system.client.name}(${system.client.id}): ${MessageInput.value}`);
+  addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`);
 
   Messages.scrollTop = Messages.scrollHeight;
 
@@ -197,28 +197,30 @@ MessageButton.addEventListener("click",(event)=>{
 
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
-  addMessage(`${event.detail.peer.name}(${event.detail.peer.id}): ${event.detail.data.content}`);
+  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})`,`${event.detail.data.content}`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("join",(event)=>{
-  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})が接続しました`);
+  addMessage("システム",`${event.detail.peer.name}(${event.detail.peer.id})が接続しました`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("leave",(event)=>{
-  addMessage(`${event.detail.peer.name}(${event.detail.peer.id})が切断されました`);
+  addMessage("システム",`${event.detail.peer.name}(${event.detail.peer.id})が切断されました`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
-function addMessage(text){
+function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
       <div class="card-body">
-        ${escape(text)}
+        <strong>${escape(name)}</strong>
+        <br>
+        ${escape(content)}
       </div>
     </div>
   `);
