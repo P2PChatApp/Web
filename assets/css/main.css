@@ -60,5 +60,5 @@ main {
 }
 
 .date {
-    text-align: right;
+    float: right;
 }

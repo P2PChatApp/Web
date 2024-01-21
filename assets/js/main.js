@@ -221,7 +221,7 @@ function addMessage(name,content){
   Messages.insertAdjacentHTML("beforeend",`
     <div class="card Message">
       <div class="card-body">
-        <strong>${escape(name)}</strong><span class="date">${new Date().toLocaleTimeString()}</span>
+        <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
         <br>
         <span class="content">${escape(content)}</span>
       </div>
@@ -238,4 +238,11 @@ function escape(str){
     ">": "&gt;",
     "/": "&sol;"
   })[m]);
+}
+
+function formatDate(date){
+  const hours = String(date.getHours()).padStart(2,"0");
+  const minutes = String(date.getMinutes()).padStart(2,"0");
+
+  return `${hours}:${minutes}`;
 }
