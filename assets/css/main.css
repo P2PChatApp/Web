@@ -40,7 +40,7 @@ main {
 #Messages {
     height: 350px;
     overflow: auto;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .SendMessage {
@@ -52,5 +52,5 @@ main {
 }
 
 .content {
-    margin-left: 10px;
+    margin-left: 15px;
 }
