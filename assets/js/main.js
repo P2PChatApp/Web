@@ -217,7 +217,9 @@ system.peers.addEventListener("leave",(event)=>{
   Messages.scrollTop = Messages.scrollHeight;
 });
 
-window.addEventListener("unload",()=>{
+window.addEventListener("unload",(event)=>{
+  if(!confirm("接続を終了しますか？")) return event.preventDefault();
+  
   system.leaveGroup();
 });
 
