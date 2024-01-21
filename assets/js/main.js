@@ -207,9 +207,9 @@ MessageButton.addEventListener("click",(event)=>{
         content: MessageInput.value
       });
 
-      addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`,attachment);
+      addMessage(`${system.client.name}(${system.client.id})`,`${MessageInput.value}`);
     }
-    
+
     Messages.scrollTop = Messages.scrollHeight;
 
     MessageInput.value = "";
