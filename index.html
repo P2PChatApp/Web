@@ -38,64 +38,62 @@
             </nav>
         </header>
         <main>
-            <div class="container">
-                <div class="wrapper">
-                    <div class="card text-center Control">
-                        <a id="log"></a>
-                        <div class="card-body">
+            <div class="wrapper">
+                <div class="card text-center Control">
+                    <a id="log"></a>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control form-control-lg" id="NameInput" disabled>
+                            <input type="button" class="btn btn-success" id="NameButton" value="編集">
+                        </div>
+                        <div class="GroupInfo">
+                            <h5 class="card-title">参加コード</h5>
+                            <h1 class="card-title"><strong id="JoinCode">&nbsp</strong></h1>
+                            <input type="submit" class="btn btn-danger" id="LeaveButton" value="脱退" disabled>
+                        </div>
+                        <div class="JoinGroup">
+                            <h5 class="card-title">グループに参加</h5>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control form-control-lg" id="NameInput" disabled>
-                                <input type="button" class="btn btn-success" id="NameButton" value="編集">
-                            </div>
-                            <div class="GroupInfo">
-                                <h5 class="card-title">参加コード</h5>
-                                <h1 class="card-title"><strong id="JoinCode">&nbsp</strong></h1>
-                                <input type="submit" class="btn btn-danger" id="LeaveButton" value="脱退" disabled>
-                            </div>
-                            <div class="JoinGroup">
-                                <h5 class="card-title">グループに参加</h5>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control form-control-lg" id="GroupInput" placeholder="参加コードを入力">
-                                    <input type="button" class="btn btn-success" id="GroupButton" value="参加">
-                                </div>
-                            </div>
-                            <div class="CreateGroup">
-                                <h5 class="card-title">グループを作成</h5>
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control form-control-lg" id="CreateInput" placeholder="グループ名を入力">
-                                    <input type="button" class="btn btn-success" id="CreateButton" value="作成">
-                                </div>
-                                <input class="form-check-input" type="checkbox" id="PublicCheck" checked>
-                                <label class="form-check-label">公開</label>
+                                <input type="text" class="form-control form-control-lg" id="GroupInput" placeholder="参加コードを入力">
+                                <input type="button" class="btn btn-success" id="GroupButton" value="参加">
                             </div>
                         </div>
-                    </div>
-                    <div class="card text-center GroupList">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">名前</th>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">人数</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody id="Groups">
-
-                                </tbody>
-                            </table>
+                        <div class="CreateGroup">
+                            <h5 class="card-title">グループを作成</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-lg" id="CreateInput" placeholder="グループ名を入力">
+                                <input type="button" class="btn btn-success" id="CreateButton" value="作成">
+                            </div>
+                            <input class="form-check-input" type="checkbox" id="PublicCheck" checked>
+                            <label class="form-check-label">公開</label>
                         </div>
                     </div>
-                    <div class="card Chat">
-                        <div class="card-body">
-                            <div id="Messages">
+                </div>
+                <div class="card text-center GroupList">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">名前</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">人数</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody id="Groups">
 
-                            </div>
-                            <div class="input-group mb-3 SendMessage">
-                                <input type="text" class="form-control form-control-lg" id="MessageInput" placeholder="メッセージを入力" disabled>
-                                <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
-                            </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card Chat">
+                    <div class="card-body">
+                        <div id="Messages">
+
+                        </div>
+                        <div class="input-group mb-3 SendMessage">
+                            <input type="text" class="form-control form-control-lg" id="MessageInput" placeholder="メッセージを入力" disabled>
+                            <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
                         </div>
                     </div>
                 </div>
