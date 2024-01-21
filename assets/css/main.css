@@ -40,7 +40,7 @@ main {
 #Messages {
     height: 350px;
     overflow: auto;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .SendMessage {
