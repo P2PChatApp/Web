@@ -24,6 +24,11 @@ const Groups = document.getElementById("Groups");
 const MessageInput = document.getElementById("MessageInput");
 const MessageButton = document.getElementById("MessageButton");
 const Messages = document.getElementById("Messages");
+
+const FileInput = document.getElementById("FileInput");
+const FileButton = document.getElementById("FileButton");
+const Files = document.getElementById("Files");
+
 const MessageError = document.getElementById("MessageError");
 
 //名前の処理
@@ -96,6 +101,8 @@ system.addEventListener("update",()=>{
           LeaveButton.disabled = false;
           MessageInput.disabled = false;
           MessageButton.disabled = false;
+          FileInput.disabled = false;
+          FileButton.disabled = false;
         }catch(error){
           log.innerText = error.message;
         }
@@ -128,6 +135,8 @@ GroupButton.addEventListener("click",(event)=>{
     LeaveButton.disabled = false;
     MessageInput.disabled = false;
     MessageButton.disabled = false;
+    FileInput.disabled = false;
+    FileButton.disabled = false;
   }catch(error){
     log.innerText = error.message;
   }
@@ -159,6 +168,8 @@ CreateButton.addEventListener("click",async(event)=>{
   LeaveButton.disabled = false;
   MessageInput.disabled = false;
   MessageButton.disabled = false;
+  FileInput.disabled = false;
+  FileButton.disabled = false;
 });
 
 //グループから脱退
@@ -176,7 +187,10 @@ LeaveButton.addEventListener("click",(event)=>{
   LeaveButton.disabled = true;
   MessageInput.disabled = true;
   MessageButton.disabled = true;
+  FileInput.disabled = true;
+  FileButton.disabled = true;
   Messages.innerText = "";
+  Files.innerText = "";
 });
 
 //メッセージの送信
@@ -198,6 +212,38 @@ MessageButton.addEventListener("click",(event)=>{
   MessageInput.value = "";
 });
 
+//ファイルの送信
+FileButton.addEventListener("click",(event)=>{
+  event.preventDefault();
+
+  MessageError.innerText = "";
+
+  if(!FileInput.files[0]) return MessageError.innerText = "ファイルを入力してください"
+
+  system.peers.sendFile(FileInput.files[0]);
+
+  const reader = new FileReader();
+
+  reader.addEventListener("load",(event)=>{
+    const data = new Blob([event.target.result],{ type: file.type });
+
+    addFile(`${system.client.name}(${system.client.id})`,data);
+
+    Files.scrollTop = Files.scrollHeight;
+
+    FileInput.value = "";
+  });
+
+  reader.readAsArrayBuffer(file);
+});
+
+//ファイルの受信
+system.peers.addEventListener("file",(event)=>{
+  addFile(`${event.detail.peer.name}(${event.detail.peer.id})`,event.detail.data);
+
+  Files.scrollTop = Files.scrollHeight;
+});
+
 //メッセージの受信
 system.peers.addEventListener("message",(event)=>{
   addMessage(`${event.detail.peer.name}(${event.detail.peer.id})`,`${event.detail.data.content}`);
@@ -206,12 +252,16 @@ system.peers.addEventListener("message",(event)=>{
 });
 
 system.peers.addEventListener("join",(event)=>{
+  if(event.detail.type !== "chat") return;
+
   addMessage("システム",`${event.detail.peer.name}(${event.detail.peer.id})が接続しました`);
 
   Messages.scrollTop = Messages.scrollHeight;
 });
 
 system.peers.addEventListener("leave",(event)=>{
+  if(event.detail.type !== "chat") return;
+
   addMessage("システム",`${event.detail.peer.name}(${event.detail.peer.id})が切断されました`);
 
   Messages.scrollTop = Messages.scrollHeight;
@@ -224,6 +274,20 @@ function addMessage(name,content){
         <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
         <br>
         <div class="content">${escape(content)}</div>
+      </div>
+    </div>
+  `);
+}
+
+function addFile(name,data){
+  const dataUrl = URL.createObjectURL(data);
+
+  Messages.insertAdjacentHTML("beforeend",`
+    <div class="card Message">
+      <div class="card-body">
+        <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
+        <br>
+        <img src="${dataUrl}">
       </div>
     </div>
   `);
