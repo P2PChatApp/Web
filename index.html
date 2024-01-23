@@ -87,13 +87,32 @@
                     </div>
                 </div>
                 <div class="card Chat">
-                    <div class="card-body">
-                        <div id="Messages">
-
-                        </div>
-                        <div class="input-group mb-3 SendMessage">
-                            <input type="text" class="form-control form-control-lg" id="MessageInput" placeholder="メッセージを入力" disabled>
-                            <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab">チャット</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab">ファイル</a>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="card-body tab-content">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+                                <div id="Messages"></div>
+                                <div class="input-group mb-3 SendMessage">
+                                    <input type="text" class="form-control form-control-lg" id="MessageInput" placeholder="メッセージを入力" disabled>
+                                    <input type="button" class="btn btn-success" id="MessageButton" value="送信" disabled>
+                                </div>
+                            </div>
+                            <div class="tab-pane">
+                                <div id="Files"></div>
+                                <div class="input-group mb-3 SendFile">
+                                    <input type="file" class="form-control form-control-lg" id="FileInput"disabled>
+                                    <input type="button" class="btn btn-success" id="FileButton" value="送信" disabled>
+                                </div>
+                            </div>
                         </div>
                         <a id="MessageError"></a>
                     </div>
