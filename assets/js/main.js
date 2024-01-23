@@ -282,7 +282,7 @@ function addMessage(name,content){
 function addFile(name,data){
   const dataUrl = URL.createObjectURL(data);
 
-  Messages.insertAdjacentHTML("beforeend",`
+  Files.insertAdjacentHTML("beforeend",`
     <div class="card Message">
       <div class="card-body">
         <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
