@@ -53,6 +53,11 @@ main {
     margin-bottom: 12px;
 }
 
+#Members {
+    height: 400px;
+    overflow: auto;
+}
+
 .SendMessage {
     margin-bottom: 0px !important;
 }

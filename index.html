@@ -89,12 +89,15 @@
                 <div class="card Chat">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
-                          <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#chat">チャット</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#file">ファイル</a>
-                          </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#chat">チャット</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#file">ファイル</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#member">メンバー</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -112,6 +115,9 @@
                                     <input type="file" class="form-control form-control-lg" id="FileInput" disabled>
                                     <input type="button" class="btn btn-success" id="FileButton" value="送信" disabled>
                                 </div>
+                            </div>
+                            <div class="tab-pane" id="member">
+                                <div id="Members"></div>
                             </div>
                         </div>
                         <a id="MessageError"></a>

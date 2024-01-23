@@ -29,6 +29,8 @@ const FileInput = document.getElementById("FileInput");
 const FileButton = document.getElementById("FileButton");
 const Files = document.getElementById("Files");
 
+const Members = document.getElementById("Members");
+
 const MessageError = document.getElementById("MessageError");
 
 //名前の処理
@@ -58,9 +60,10 @@ NameButton.addEventListener("click",(event)=>{
   }
 });
 
-//グループ情報
+//グループ情報、メンバー情報
 system.addEventListener("update",()=>{
   Groups.innerText = "";
+  Members.innerText = "";
 
   const groups = system.getGroups();
 
@@ -108,6 +111,18 @@ system.addEventListener("update",()=>{
         }
       });
     });
+
+    system.peers.all()
+      .filter(p=>p.rtc.connectionState === "connected")
+      .forEach(p=>{
+        Members.insertAdjacentHTML("beforeend",`
+          <div class="card Message">
+            <div class="card-body">
+              <strong>${escape(p.name)}(${escape(p.id)})</strong>
+            </div>
+          </div>
+        `);
+      });
 });
 
 //グループに参加
