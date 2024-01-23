@@ -47,6 +47,12 @@ main {
     margin-bottom: 12px;
 }
 
+#Files {
+    height: 350px;
+    overflow: auto;
+    margin-bottom: 12px;
+}
+
 .SendMessage {
     margin-bottom: 0px !important;
 }
