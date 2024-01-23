@@ -287,7 +287,7 @@ function addFile(name,data){
       <div class="card-body">
         <strong>${escape(name)}</strong><span class="date">${formatDate(new Date())}</span>
         <br>
-        <img src="${dataUrl}">
+        <img src="${dataUrl}" width="400">
       </div>
     </div>
   `);
