@@ -235,21 +235,25 @@ FileButton.addEventListener("click",(event)=>{
 
   if(!FileInput.files[0]) return MessageError.innerText = "ファイルを入力してください"
 
-  system.peers.sendFile(FileInput.files[0]);
+  try{
+    system.peers.sendFile(FileInput.files[0]);
 
-  const reader = new FileReader();
+    const reader = new FileReader();
 
-  reader.addEventListener("load",(event)=>{
-    const data = new Blob([event.target.result],{ type: FileInput.files[0].type });
+    reader.addEventListener("load",(event)=>{
+      const data = new Blob([event.target.result],{ type: FileInput.files[0].type });
 
-    addFile(`${system.client.name}(${system.client.id})`,data);
+      addFile(`${system.client.name}(${system.client.id})`,data);
 
-    Files.scrollTop = Files.scrollHeight;
+      Files.scrollTop = Files.scrollHeight;
 
-    FileInput.value = "";
-  });
+      FileInput.value = "";
+    });
 
-  reader.readAsArrayBuffer(FileInput.files[0]);
+    reader.readAsArrayBuffer(FileInput.files[0]);
+  }catch(error){
+    MessageError.innerText = error.message;
+  }
 });
 
 //ファイルの受信
