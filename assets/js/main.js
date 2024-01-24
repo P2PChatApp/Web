@@ -241,7 +241,9 @@ FileButton.addEventListener("click",(event)=>{
     const reader = new FileReader();
 
     reader.addEventListener("load",(event)=>{
-      const data = new Blob([event.target.result],{ type: FileInput.files[0].type });
+      const data = new Blob([event.target.result],{
+        type: FileInput.files[0].type
+      });
 
       addFile(`${system.client.name}(${system.client.id})`,data);
 
@@ -253,6 +255,8 @@ FileButton.addEventListener("click",(event)=>{
     reader.readAsArrayBuffer(FileInput.files[0]);
   }catch(error){
     MessageError.innerText = error.message;
+
+    FileInput.value = "";
   }
 });
 
