@@ -1,4 +1,4 @@
-const system = new System("wss://ws.taka.cf",{
+const system = new System("wss://chatws.takadev.jp",{
   name: localStorage.username
 });
 
